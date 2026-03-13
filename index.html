@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="enricopesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="cc74aaa">
+<meta name="build-version" content="ec05838">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -1308,12 +1308,16 @@
                regions: m.regions || {}, callType: m.callType || 'hosted',
                why: m.wizardWhy };
     });
-    var wizEmbedIds = ['cohere.embed-v4.0', 'cohere.rerank.v3-5', 'cohere.embed-english-image-v3.0'];
     var allEmbedRank = data.embeddingModels.concat(data.rerankModels);
-    WIZ_EMBED = wizEmbedIds.map(function(id) {
-      var m = allEmbedRank.filter(function(x){ return x.id === id; })[0];
-      return m ? { name: m.name, id: m.id, badge: 'badge-embed', why: m.wizardWhy } : null;
-    }).filter(Boolean);
+    WIZ_EMBED = allEmbedRank.map(function(m) {
+      return { 
+        name: m.name, id: m.id, badge: 'badge-embed', why: m.wizardWhy,
+        regions: m.regions || {}, callType: m.callType || 'hosted', finetune: false,
+        tasks: ['embed'],
+        tier: (m.sizeVariant === 'Light' || m.input === 'Query + List of texts') ? ['fast'] : ['flagship', 'balanced'],
+        ctx: 'standard'
+      };
+    });
   }
 
   // ── FILTER CHIPS ──────────────────────────────────────────────────
@@ -1482,7 +1486,7 @@
       // Region access tags for selected region
       var regionTags = '';
       var regionIds = region !== 'any' ? (WIZARD_REGION_MAP[region] || [])
-                                       : Object.keys(r.regions).slice(0, 4);
+                                       : Object.keys(r.regions || {}).slice(0, 4);
       regionIds.forEach(function(rid) {
         if (!r.regions[rid]) return;
         var a   = r.regions[rid];
@@ -1518,6 +1522,7 @@
   var wizHistory = [];
 
   function wizGoToStep(n) {
+    document.getElementById('wizResultsBox').style.display = 'none';
     document.querySelectorAll('.wiz-step').forEach(function(s) {
       s.style.display = parseInt(s.dataset.step) === n ? '' : 'none';
     });
@@ -1526,7 +1531,7 @@
       var s = parseInt(d.dataset.step);
       d.className = 'wiz-prog-dot' + (s < n ? ' wiz-prog-done' : s === n ? ' wiz-prog-active' : '');
     });
-    document.getElementById('wizBackRow').style.display = wizHistory.length > 0 ? '' : 'none';
+    document.getElementById('wizBackRow').style.display = (wizHistory.length > 0 && n <= 4) ? '' : 'none';
   }
 
   function wizAdvance(step, val) {
@@ -1540,15 +1545,13 @@
       b.classList.add('wiz-selected');
     });
     // Navigation flow
-    if (step === 1 && val === 'embed') {
-      setTimeout(wizShowResults, 200);
-    } else if (step === 1 && val === 'finetune') {
+    if (step === 1 && val === 'finetune') {
       // Fine-tuning requires dedicated; skip tier (step 2) and deployment (step 3)
       wizAnswers[2] = 'balanced';
       wizAnswers[3] = 'dedicated';
       setTimeout(function() { wizGoToStep(4); }, 200);
     } else if (step === 4) {
-      setTimeout(wizShowResults, 200);
+      setTimeout(function() { wizGoToStep(5); wizShowResults(); }, 200);
     } else {
       setTimeout(function() { wizGoToStep(step + 1); }, 200);
     }
