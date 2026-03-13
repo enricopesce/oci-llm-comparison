@@ -980,7 +980,7 @@
         "us-chicago-1": "ondemand",
         "us-phoenix-1": "ondemand"
       },
-      "wizardTasks": ["chat", "code", "rag"],
+      "wizardTasks": ["chat", "code", "rag", "vision"],
       "wizardTier": ["balanced", "fast"],
       "wizardCtx": "standard",
       "wizardWhy": "Grok 4 quality · speed + cost optimized"
@@ -1030,7 +1030,7 @@
         "us-chicago-1": "ondemand",
         "us-phoenix-1": "ondemand"
       },
-      "wizardTasks": ["chat", "code", "rag"],
+      "wizardTasks": ["chat", "code", "rag", "vision"],
       "wizardTier": ["flagship"],
       "wizardCtx": "huge",
       "wizardWhy": "2M context · agentic flagship · parallel tool calls · 3× fewer hallucinations"
