@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="enricopesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="2457c72">
+<meta name="build-version" content="6b7dcc9">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -36,7 +36,7 @@
   "name": "OCI GenAI Catalog",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-genai-catalog/",
-  "dateModified": "2026-03-17",
+  "dateModified": "2026-04-09",
   "author": { "@type": "Person", "name": "enricopesce" },
   "about": {
     "@type": "Thing",
@@ -572,7 +572,7 @@
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
     <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 17 Mar 2026 &nbsp;|&nbsp; 30+ models</p>
+  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 09 Apr 2026 &nbsp;|&nbsp; 30+ models</p>
   
   <nav class="view-switcher" style="display: flex; background: var(--panel2); border: 1px solid var(--border); padding: 4px; border-radius: 4px; margin-left: 20px;">
     <button class="view-btn active" id="btnReference" style="background: var(--border); color: var(--on-surface); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Technical Tables</button>
@@ -753,7 +753,7 @@
   <!-- STAT BAR -->
   <div class="stat-bar">
     <div class="stat"><div class="stat-num">5</div><div class="stat-label">Model Providers</div></div>
-    <div class="stat"><div class="stat-num">24</div><div class="stat-label">Chat Models (Active)</div></div>
+    <div class="stat"><div class="stat-num">26</div><div class="stat-label">Chat Models (Active)</div></div>
     <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models</div></div>
     <div class="stat"><div class="stat-num">1</div><div class="stat-label">Rerank Model</div></div>
     <div class="stat"><div class="stat-num">74</div><div class="stat-label">Imported Models</div></div>
@@ -1624,9 +1624,9 @@
     </div>
     <div class="matrix-card">
       <h3>🤖 Agentic / Tool-Use Workflows</h3>
-      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">xAI Grok 4.1 Fast</div><div class="rec-desc">2M context, parallel tool calls, 3x lower hallucinations</div><div class="rec-meta"><span class="tag tag-blue">On-demand (ext.)</span></div></div></div>
-      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">Cohere Command A</div><div class="rec-desc">256K context, best throughput for Cohere agentic tasks</div><div class="rec-meta"><span class="tag tag-green">On-demand + Ded.</span></div></div></div>
-      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">OpenAI gpt-oss-120b</div><div class="rec-desc">Advanced tool use, reasoning, OpenAI-compatible API</div><div class="rec-meta"><span class="tag tag-green">On-demand + Ded.</span></div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥇</div><div><div class="rec-title">xAI Grok 4.20 Multi-Agent</div><div class="rec-desc">Real-time multi-agent research: parallel specialist orchestration for web search, analysis &amp; synthesis</div><div class="rec-meta"><span class="tag tag-blue">On-demand (ext.)</span></div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥈</div><div><div class="rec-title">xAI Grok 4.1 Fast</div><div class="rec-desc">2M context, parallel tool calls, 3× fewer hallucinations</div><div class="rec-meta"><span class="tag tag-blue">On-demand (ext.)</span></div></div></div>
+      <div class="rec-item"><div class="rec-icon">🥉</div><div><div class="rec-title">Cohere Command A</div><div class="rec-desc">256K context, best throughput for Cohere agentic tasks</div><div class="rec-meta"><span class="tag tag-green">On-demand + Ded.</span></div></div></div>
     </div>
     <div class="matrix-card">
       <h3>💻 Code Generation</h3>
@@ -1734,8 +1734,8 @@
     <p>² Fine-tuning on OCI uses dedicated AI clusters (GPU resources belonging exclusively to your tenancy). Cohere supports T-Few &amp; Vanilla strategies; Meta Llama supports LoRA.</p>
     <p>³ Retired/deprecated models (Command R legacy, Llama 3 70B, Llama 3.1 70B) are omitted from the main tables.</p>
     <p>⁴ Model Import feature (GA 2025) lets you bring your own LLMs from Hugging Face or OCI Object Storage.</p>
-    <p>⁶ Grok 4.1 Fast context window (2M tokens) is confirmed by OCI documentation. Grok 4 and Grok 4 Fast context windows are not disclosed in OCI official docs.</p>
-    <p>⁵ Data sources (OCI Official Documentation, last updated 17 March 2026):
+    <p>⁶ Grok 4.1 Fast context window (2M tokens) is confirmed by OCI documentation. Grok 4, Grok 4 Fast, Grok 4.20, and Grok 4.20 Multi-Agent context windows are not disclosed in OCI official docs.</p>
+    <p>⁵ Data sources (OCI Official Documentation, last updated 09 April 2026):
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Pretrained Models</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Models by Region</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Inferencing Modes</a> ·
