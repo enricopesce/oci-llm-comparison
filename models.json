@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "dataDate": "2026-04-13",
+    "dataDate": "2026-04-15",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/",
     "version": "2026-04",
     "regionDefinitions": {
@@ -312,7 +312,7 @@
       "parameters": null,
       "activeParameters": null,
       "architecture": null,
-      "contextWindowLabel": "1M+",
+      "contextWindowLabel": "1M",
       "contextWindowK": 1000,
       "contextClass": "huge",
       "multimodal": true,
@@ -351,7 +351,7 @@
       "wizardTasks": ["rag", "code", "vision", "chat"],
       "wizardTier": ["flagship"],
       "wizardCtx": "huge",
-      "wizardWhy": "1M+ context · SOTA reasoning · text + image + audio + video"
+      "wizardWhy": "1M context · SOTA reasoning · text + image + audio + video"
     },
     {
       "name": "Gemini 2.5 Flash",
