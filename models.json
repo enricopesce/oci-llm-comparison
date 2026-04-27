@@ -1639,6 +1639,7 @@
         "eu-frankfurt-1":"dedicated",
         "uk-london-1":   "dedicated",
         "me-riyadh-1":   "dedicated",
+        "ap-hyderabad-1":"dedicated",
         "ap-osaka-1":    "dedicated"
       },
       "wizardWhy": "Pair with embeddings to rerank RAG results by relevance score"
