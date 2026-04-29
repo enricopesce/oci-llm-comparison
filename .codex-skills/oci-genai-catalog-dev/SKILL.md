@@ -7,20 +7,31 @@ description: "Maintain the OCI GenAI Catalog project at /home/opc/source/ocillms
 
 ## Overview
 
-Treat `models.json` and `imported-models.json` as the catalog data sources of truth, and treat `index.html` as the UI shell plus all client-side rendering logic. Start by running `scripts/catalog_audit.py --repo /home/opc/source/ocillms` unless the task is a very small copy-only change.
+Treat `models.json` and `imported-models.json` as the local catalog data sources of truth, and treat `index.html` as the UI shell plus all client-side rendering logic. Those JSON files are maintained from OCI public documentation, primarily:
+
+- Native OCI models:
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm`
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm`
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm`
+- Imported/open-weight models:
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm`
+
+Start by running `python3 /home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo /home/opc/source/ocillms` unless the task is a very small copy-only change.
 
 ## Workflow
 
 ### Establish the current state
 
 - Inspect `/home/opc/source/ocillms` directly; helper docs can drift, so confirm behavior from the code and JSON files.
-- Read `references/project-map.md` when the task touches data sync, rendering, filters, wizard behavior, service-worker behavior, or stale docs.
+- Read `/home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev/references/project-map.md` when the task touches data sync, rendering, filters, wizard behavior, service-worker behavior, or stale docs.
 - Check the worktree before editing so you do not overwrite user changes.
 
 ### Update the real source of truth first
 
+- Verify changes against the OCI docs pages listed in the Overview, then update the local JSON snapshots.
 - Edit `models.json` for native OCI chat, embedding, and rerank data.
 - Edit `imported-models.json` for imported/open-weight families and models.
+- Keep each JSON file's `metadata.source` aligned with the OCI page it was derived from.
 - Only edit the imported-model HTML rows in `index.html` when the page structure itself changes. Runtime rendering clears and replaces those rows from JSON on load.
 
 ### Keep `index.html` in sync with JSON-backed data
@@ -31,6 +42,7 @@ Treat `models.json` and `imported-models.json` as the catalog data sources of tr
   - stat-bar counts
   - imported-model intro counts
   - footnote "last updated ..." copy
+  - footnote data-source links when the upstream OCI source pages change
 - If a new native provider appears, update the provider-specific HTML sections and the hardcoded JS mappings in `renderAll()`, `PROVIDER_LABELS`, and `WIZ_PROVIDER`.
 - If a new imported family appears, add a matching `.import-family-title[data-family="..."]` section so `renderImported()` has a mount point.
 
@@ -45,19 +57,24 @@ Treat `models.json` and `imported-models.json` as the catalog data sources of tr
 
 ### Validate before finishing
 
-- Run `scripts/catalog_audit.py --repo /home/opc/source/ocillms` after non-trivial changes.
+- Run `python3 /home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo /home/opc/source/ocillms` after non-trivial changes.
 - If you modify this skill, run `python3 /home/opc/.codex/skills/.system/skill-creator/scripts/quick_validate.py /home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev`.
 - For UI or behavior changes, serve the repo locally with `python3 -m http.server 8080` from `/home/opc/source/ocillms` and exercise the reference view, wizard view, filters, and theme toggle.
 
 ### Keep supporting docs honest
 
-- Update `README.md` and `references/project-map.md` when architecture or workflow changes materially.
+- Update `README.md` and `/home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev/references/project-map.md` when architecture or workflow changes materially.
 - Treat the code and JSON files as the source of truth when helper docs drift.
 
 ## References
 
-- Read `references/project-map.md` for the repo layout, hardcoded sync points, and recurring maintenance traps.
+- Read `/home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev/references/project-map.md` for the repo layout, hardcoded sync points, and recurring maintenance traps.
+- Upstream OCI source pages:
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm`
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm`
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm`
+  - `https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm`
 
 ## Bundled helper
 
-- Use `scripts/catalog_audit.py` to compare JSON counts and dates against the hardcoded values still living in `index.html`, and to flag stale project docs that commonly drift.
+- Use `python3 /home/opc/source/ocillms/.codex-skills/oci-genai-catalog-dev/scripts/catalog_audit.py --repo /home/opc/source/ocillms` to compare JSON counts and dates against the hardcoded values still living in `index.html`, and to flag stale project docs that commonly drift.

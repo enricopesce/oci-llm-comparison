@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="enricopesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="bac55ec">
+<meta name="build-version" content="33a7c12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -50,7 +50,7 @@
 <style>
   :root {
     --red: #C0392B;
-    --red-light: #E74C3C;
+    --red-light: #F05F52;
     --dark: #1A1D24;
     --panel: #222630;
     --panel2: #2A2F3D;
@@ -58,6 +58,8 @@
     --text: #E8EAF0;
     --muted: #9AA2BF;
     --on-surface: #fff;
+    --link: #7C9DFF;
+    --warn-text: #FFAE6D;
     --hover-row: rgba(255,255,255,0.04);
     --tag-bg: rgba(255,255,255,0.07);
     --tag-border: rgba(255,255,255,0.13);
@@ -73,6 +75,7 @@
 
   /* LIGHT THEME */
   html.light {
+    --red-light: #C0392B;
     --dark: #F2F4FA;
     --panel: #FFFFFF;
     --panel2: #E8EBF5;
@@ -80,6 +83,8 @@
     --text: #1D2135;
     --muted: #5C6480;
     --on-surface: #1D2135;
+    --link: #2B4BB5;
+    --warn-text: #8B4A0A;
     --hover-row: rgba(0,0,0,0.025);
     --tag-bg: rgba(0,0,0,0.04);
     --tag-border: rgba(0,0,0,0.12);
@@ -90,7 +95,7 @@
   html.light .tier-fast     { color: #2B4BB5; }
   html.light .tier-spec     { color: #6B2E9E; }
   html.light .yes           { color: #1A7A38; }
-  html.light .no            { color: #9AA0B8; }
+  html.light .no            { color: #5C6480; }
   html.light .ctx-huge      { color: #C0392B; }
   html.light .ctx-xl        { color: #8B4A0A; }
   html.light .ctx-lg        { color: #7A5900; }
@@ -98,9 +103,9 @@
   html.light .status-active     { color: #1A7A38; }
   html.light .status-retired    { color: #C0392B; }
   html.light .status-deprecated { color: #8B4A0A; }
-  html.light .tag-green { background: rgba(52,168,83,0.1);   color: #1A7A38; border-color: rgba(52,168,83,0.3); }
+  html.light .tag-green { background: rgba(52,168,83,0.1);   color: #167032; border-color: rgba(52,168,83,0.3); }
   html.light .tag-blue  { background: rgba(78,111,224,0.1);  color: #2B4BB5; border-color: rgba(78,111,224,0.3); }
-  html.light .tag-red   { background: rgba(192,57,43,0.1);   color: #C0392B; border-color: rgba(192,57,43,0.3); }
+  html.light .tag-red   { background: rgba(192,57,43,0.1);   color: #A83226; border-color: rgba(192,57,43,0.3); }
   html.light .tag-orange{ background: rgba(230,126,34,0.1);  color: #8B4A0A; border-color: rgba(230,126,34,0.3); }
   html.light .badge-cohere { color: #2B4BB5; }
   html.light .badge-google { color: #1A6B35; }
@@ -109,9 +114,9 @@
   html.light .badge-xai    { color: #6B2E9E; }
   html.light .badge-embed  { color: #8B4A0A; }
   html.light .badge-nvidia   { color: #3A6400; }
-  html.light .badge-alibaba  { color: #B04000; }
+  html.light .badge-alibaba  { color: #963500; }
   html.light .badge-deepseek { color: #1A4BB5; }
-  html.light .badge-gemma    { color: #0A7A50; }
+  html.light .badge-gemma    { color: #086A46; }
   html.light .badge-phi      { color: #0055A0; }
   html.light .badge-mistral  { color: #A03000; }
 
@@ -210,6 +215,10 @@
 
   /* TABLE WRAPPER */
   .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+  .table-wrap:focus-visible {
+    outline: 2px solid var(--red-light);
+    outline-offset: 3px;
+  }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   thead th {
     background: var(--panel2);
@@ -306,7 +315,7 @@
 
   /* YES / NO */
   .yes { color: #5DD880; font-size: 14px; }
-  .no  { color: #555;    font-size: 14px; }
+  .no  { color: #9AA2BF; font-size: 14px; }
 
   /* CONTEXT CHIP */
   .ctx { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; white-space: nowrap; }
@@ -582,7 +591,7 @@
   <button class="theme-toggle" id="themeToggle">☀ Light Mode</button>
 </header>
 
-<div class="container">
+<main class="container" id="main">
 
   <!-- WIZARD VIEW -->
   <div id="wizardView" style="display: none; max-width: 1100px; margin: 0 auto; padding-bottom: 40px;">
@@ -764,7 +773,7 @@
   <!--  CHAT MODELS                                              -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
-  <div class="section-title">Chat Models — Cohere Family</div>
+  <h2 class="section-title">Chat Models — Cohere Family</h2>
   <div class="table-wrap">
   <table>
     <thead>
@@ -858,7 +867,7 @@
   </table>
   </div>
 
-  <div class="section-title">Chat Models — Google Gemini Family</div>
+  <h2 class="section-title">Chat Models — Google Gemini Family</h2>
   <div class="table-wrap">
   <table>
     <thead>
@@ -924,7 +933,7 @@
   </table>
   </div>
 
-  <div class="section-title">Chat Models — Meta Llama Family</div>
+  <h2 class="section-title">Chat Models — Meta Llama Family</h2>
   <div class="table-wrap">
   <table>
     <thead>
@@ -1032,7 +1041,7 @@
   </table>
   </div>
 
-  <div class="section-title">Chat Models — OpenAI gpt-oss Family</div>
+  <h2 class="section-title">Chat Models — OpenAI gpt-oss Family</h2>
   <div class="table-wrap">
   <table>
     <thead>
@@ -1084,7 +1093,7 @@
   </table>
   </div>
 
-  <div class="section-title">Chat Models — xAI Grok Family</div>
+  <h2 class="section-title">Chat Models — xAI Grok Family</h2>
   <div class="table-wrap">
   <table>
     <thead>
@@ -1253,7 +1262,7 @@
   <!--  EMBEDDING MODELS                                         -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
-  <div class="section-title">Embedding Models</div>
+  <h2 class="section-title">Embedding Models</h2>
   <div class="table-wrap">
   <table>
     <thead>
@@ -1374,7 +1383,7 @@
   </div>
 
   <!-- RERANK -->
-  <div class="section-title">Rerank Model</div>
+  <h2 class="section-title">Rerank Model</h2>
   <div class="table-wrap">
   <table>
     <thead>
@@ -1407,11 +1416,11 @@
   <!--  IMPORTED MODELS (Model Import — bring your own model)     -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
-  <div class="section-title">Imported Models</div>
+  <h2 class="section-title">Imported Models</h2>
   <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights models from HuggingFace into your own dedicated GPU cluster endpoint. 8 provider families · 79 models · supports fine-tuned variants within ±10% parameter count.</p>
 
   <!-- ALIBABA QWEN -->
-  <div class="import-family-title" data-family="alibaba">Alibaba Qwen Family</div>
+  <h3 class="import-family-title" data-family="alibaba">Alibaba Qwen Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -1733,7 +1742,7 @@
   </div>
 
   <!-- DEEPSEEK -->
-  <div class="import-family-title" data-family="deepseek">DeepSeek Family</div>
+  <h3 class="import-family-title" data-family="deepseek">DeepSeek Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -1751,7 +1760,7 @@
   </div>
 
   <!-- GOOGLE GEMMA -->
-  <div class="import-family-title" data-family="gemma">Google Gemma Family</div>
+  <h3 class="import-family-title" data-family="gemma">Google Gemma Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -1825,7 +1834,7 @@
   </div>
 
   <!-- META LLAMA -->
-  <div class="import-family-title" data-family="meta">Meta Llama Family</div>
+  <h3 class="import-family-title" data-family="meta">Meta Llama Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -1923,7 +1932,7 @@
   </div>
 
   <!-- MICROSOFT PHI -->
-  <div class="import-family-title" data-family="phi">Microsoft Phi Family</div>
+  <h3 class="import-family-title" data-family="phi">Microsoft Phi Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -1997,7 +2006,7 @@
   </div>
 
   <!-- MISTRAL -->
-  <div class="import-family-title" data-family="mistral">Mistral Family</div>
+  <h3 class="import-family-title" data-family="mistral">Mistral Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -2055,7 +2064,7 @@
   </div>
 
   <!-- NVIDIA NEMOTRON -->
-  <div class="import-family-title" data-family="nvidia">NVIDIA Nemotron Family</div>
+  <h3 class="import-family-title" data-family="nvidia">NVIDIA Nemotron Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -2097,7 +2106,7 @@
   </div>
 
   <!-- OPENAI GPTOSS (IMPORTED) -->
-  <div class="import-family-title" data-family="openai-oss">OpenAI GptOss Family</div>
+  <h3 class="import-family-title" data-family="openai-oss">OpenAI GptOss Family</h3>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Model Name</th><th>HuggingFace Model ID</th><th>Type</th><th>Params</th><th>Context</th><th>Cluster Shape</th></tr></thead>
@@ -2126,7 +2135,7 @@
   <!--  USE-CASE DECISION MATRIX                                  -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
-  <div class="section-title">Use-Case Selection Guide</div>
+  <h2 class="section-title">Use-Case Selection Guide</h2>
   <div class="matrix-row">
     <div class="matrix-card">
       <h3>🔍 RAG / Document Search</h3>
@@ -2224,7 +2233,7 @@
 
   <!-- LEGEND -->
   <div class="legend">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8EAF0;font-weight:600;width:100%;margin-bottom:4px;">LEGEND</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--on-surface);font-weight:600;width:100%;margin-bottom:4px;">LEGEND</div>
     <div class="legend-item"><span class="tier tier-flagship">★</span> Flagship / Best-in-class</div>
     <div class="legend-item"><span class="tier tier-balanced">◉</span> Balanced / Advanced</div>
     <div class="legend-item"><span class="tier tier-fast">▷</span> Speed / Efficiency tier</div>
@@ -2248,15 +2257,15 @@
     <p>⁴ Model Import feature (GA 2025) lets you bring your own LLMs from Hugging Face or OCI Object Storage.</p>
     <p>⁶ OCI documents Grok 4 at 128K context and Grok 4 Fast, Grok 4.1 Fast, Grok 4.20, and Grok 4.20 Multi-Agent at 2M context.</p>
     <p>⁵ Data sources (OCI Official Documentation; catalog last updated 17 April 2026; OC1 commercial regions only):
-      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Pretrained Models</a> ·
-      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Models by Region</a> ·
-      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Inferencing Modes</a> ·
-      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm" target="_blank" rel="noopener" style="color:#7C9DFF;">Model Import</a>
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Pretrained Models</a> ·
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:var(--link);">Models by Region</a> ·
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:var(--link);">Inferencing Modes</a> ·
+      <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Model Import</a>
     </p>
   </div>
 
   <div style="margin-top:24px; padding:10px 16px; background:rgba(230,126,34,0.08); border:1px solid rgba(230,126,34,0.25); font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; line-height:1.6;">
-    ⚠ <strong style="color:#FFAE6D;">AI-generated content — not an official Oracle document.</strong> This page was assembled with AI assistance from OCI public documentation. Data may contain errors or be out of date. Always verify against <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/" target="_blank" rel="noopener" style="color:#7C9DFF;">docs.oracle.com</a> before making production decisions.
+    ⚠ <strong style="color:var(--warn-text);">AI-generated content — not an official Oracle document.</strong> This page was assembled with AI assistance from OCI public documentation. Data may contain errors or be out of date. Always verify against <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/" target="_blank" rel="noopener" style="color:var(--link);">docs.oracle.com</a> before making production decisions.
   </div>
   <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border); text-align:center; font-size:12px; color:var(--muted); font-family:'IBM Plex Mono',monospace;">
     <a href="https://github.com/enricopesce/oci-genai-catalog" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; margin-right:16px;">⌥ GitHub Repository</a>
@@ -2266,7 +2275,7 @@
   </div>
 
 </div><!-- /#referenceView -->
-</div><!-- /.container -->
+</main><!-- /.container -->
 
 <script>
   // ── THEME TOGGLE ──────────────────────────────────────────────────
@@ -2324,6 +2333,19 @@
     'me-riyadh-1':   'Saudi Arabia (Riyadh)',   'me-dubai-1':    'UAE East (Dubai)',
     'ap-hyderabad-1':'India South (Hyderabad)', 'ap-osaka-1':    'Japan Central (Osaka)'
   };
+
+  function enhanceTableAccessibility() {
+    document.querySelectorAll('.table-wrap').forEach(function(wrap) {
+      var title = wrap.previousElementSibling;
+      var titleText = title && (
+        title.classList.contains('section-title') ||
+        title.classList.contains('import-family-title')
+      ) ? title.textContent.trim() : 'Model comparison';
+      wrap.setAttribute('tabindex', '0');
+      wrap.setAttribute('role', 'group');
+      wrap.setAttribute('aria-label', titleText + ' table');
+    });
+  }
 
   function mkBool(val, yesDetail, noDetail) {
     if (val === null || val === undefined) return '<span class="no">—</span>';
@@ -2596,9 +2618,11 @@
   ]).then(function(results) {
     renderAll(results[0]);
     renderImported(results[1]);
+    enhanceTableAccessibility();
     initFilters();
   }).catch(function(err) {
     console.error('Failed to load model data:', err);
+    enhanceTableAccessibility();
     initFilters();
   });
 
