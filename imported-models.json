@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "dataDate": "2026-05-07",
+    "dataDate": "2026-05-17",
     "source": "OCI Official Documentation — docs.oracle.com/en-us/iaas/Content/generative-ai/imported-models.htm",
     "version": "2026-05",
-    "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count. Includes the Qwen Image family announced for OCI Generative AI in March 2026."
+    "note": "Models available via OCI Generative AI Model Import. Requires a dedicated GPU cluster endpoint. Fine-tuned variants supported within ±10% of the base parameter count. Includes Qwen, Gemma, NVIDIA Nemotron, and OpenAI gpt-oss entries reflected in the OCI Model Import documentation."
   },
   "families": [
     {
@@ -12,6 +12,8 @@
       "badge": "alibaba",
       "label": "Alibaba",
       "models": [
+        { "name": "Qwen3.6-35B-A3B",                "hfId": "Qwen/Qwen3.6-35B-A3B",                     "type": "vision",    "params": "35B",  "activeParams": "3B active", "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "H100_X2",     "clusterClass": "tag-blue" },
+        { "name": "Qwen3.5-9B",                     "hfId": "Qwen/Qwen3.5-9B",                          "type": "vision",    "params": "9B",   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "H100_X1",     "clusterClass": "tag-blue" },
         { "name": "QwQ-32B",                        "hfId": "Qwen/QwQ-32B",                             "type": "reasoning", "params": "32B",  "activeParams": null,        "contextWindowLabel": "128K", "contextClass": "lg",   "clusterShape": "A100_80G_X2", "clusterClass": "" },
         { "name": "Qwen Image",                    "hfId": "Qwen/Qwen-Image",                          "type": "image",     "params": null,   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Qwen Image Edit",               "hfId": "Qwen/Qwen-Image-Edit",                     "type": "image",     "params": null,   "activeParams": null,        "contextWindowLabel": "—",    "contextClass": null,   "clusterShape": "A100_80G_X1", "clusterClass": "" },
@@ -68,6 +70,7 @@
       "badge": "gemma",
       "label": "Gemma",
       "models": [
+        { "name": "Gemma 4 31B",  "hfId": "google/gemma-4-31B-it",  "type": "vision", "params": "31B",  "activeParams": null, "contextWindowLabel": "—",    "contextClass": null, "clusterShape": "H100_X2",     "clusterClass": "tag-blue" },
         { "name": "Gemma 3 270M", "hfId": "google/gemma-3-270m-it", "type": "chat",   "params": "270M", "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Gemma 3 1B",   "hfId": "google/gemma-3-1b-it",   "type": "chat",   "params": "1B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },
         { "name": "Gemma 3 4B",   "hfId": "google/gemma-3-4b-it",   "type": "vision", "params": "4B",   "activeParams": null, "contextWindowLabel": "128K", "contextClass": "lg", "clusterShape": "A100_80G_X1", "clusterClass": "" },

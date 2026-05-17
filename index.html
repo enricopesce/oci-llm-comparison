@@ -8,7 +8,7 @@
 <meta name="keywords" content="OCI GenAI Catalog, OCI generative AI, Oracle Cloud AI, Cohere Command, Google Gemini OCI, Meta Llama OCI, xAI Grok OCI, OpenAI gpt-oss OCI, OCI AI models 2026, large language models Oracle, OCI embedding models, OCI model catalog">
 <meta name="author" content="Enrico Pesce">
 <meta name="robots" content="index, follow">
-<meta name="build-version" content="dd87130">
+<meta name="build-version" content="f542e0d">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <link rel="canonical" href="https://enricopesce.github.io/oci-genai-catalog/">
@@ -36,7 +36,7 @@
   "name": "OCI GenAI Catalog",
   "description": "Complete reference for all Oracle Cloud Infrastructure (OCI) Generative AI models including chat, embedding, and rerank models from 5 providers.",
   "url": "https://enricopesce.github.io/oci-genai-catalog/",
-  "dateModified": "2026-05-07",
+  "dateModified": "2026-05-17",
   "author": { "@type": "Person", "name": "Enrico Pesce" },
   "about": {
     "@type": "Thing",
@@ -581,7 +581,7 @@
     <div class="oracle-badge">OCI · GENERATIVE AI</div>
     <h1>OCI GenAI Catalog</h1>
   </div>
-  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 7 May 2026 &nbsp;|&nbsp; 30+ models</p>
+  <p>Source: OCI Official Documentation &nbsp;|&nbsp; Updated 17 May 2026 &nbsp;|&nbsp; 30+ models</p>
   
   <nav class="view-switcher" style="display: flex; background: var(--panel2); border: 1px solid var(--border); padding: 4px; border-radius: 4px; margin-left: 20px;">
     <button class="view-btn active" id="btnReference" style="background: var(--border); color: var(--on-surface); border: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; border-radius: 2px; transition: all 0.2s;">Technical Tables</button>
@@ -707,7 +707,7 @@
             <button class="wiz-opt" data-val="me">
               <span class="wiz-opt-icon">🏜</span>
               <span class="wiz-opt-label">Middle East</span>
-              <span class="wiz-opt-desc">Saudi Arabia (Riyadh) · UAE (Dubai)</span>
+              <span class="wiz-opt-desc">Saudi Arabia (Riyadh) · UAE (Abu Dhabi, Dubai)</span>
             </button>
             <button class="wiz-opt" data-val="apac">
               <span class="wiz-opt-icon">🌏</span>
@@ -764,8 +764,8 @@
     <div class="stat"><div class="stat-num">5</div><div class="stat-label">Model Providers</div></div>
     <div class="stat"><div class="stat-num">27</div><div class="stat-label">Chat Models (Active)</div></div>
     <div class="stat"><div class="stat-num">9</div><div class="stat-label">Embedding Models</div></div>
-    <div class="stat"><div class="stat-num">1</div><div class="stat-label">Rerank Model</div></div>
-    <div class="stat"><div class="stat-num">79</div><div class="stat-label">Imported Models</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Rerank Model</div></div>
+    <div class="stat"><div class="stat-num">82</div><div class="stat-label">Imported Models</div></div>
   </div>
 
 
@@ -1417,7 +1417,7 @@
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <h2 class="section-title">Imported Models</h2>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights models from HuggingFace into your own dedicated GPU cluster endpoint. 8 provider families · 79 models · supports fine-tuned variants within ±10% parameter count.</p>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Available via <strong style="color:var(--text);">OCI Generative AI Model Import</strong> — import open-weights models from HuggingFace into your own dedicated GPU cluster endpoint. 8 provider families · 82 models · supports fine-tuned variants within ±10% parameter count.</p>
 
   <!-- ALIBABA QWEN -->
   <h3 class="import-family-title" data-family="alibaba">Alibaba Qwen Family</h3>
@@ -2253,10 +2253,10 @@
   <div class="footnotes">
     <p>¹ Parameter counts are shown only when officially disclosed by the provider. Proprietary models (Google Gemini, xAI Grok) do not publish parameter counts and are omitted. "—" means not publicly disclosed.</p>
     <p>² Fine-tuning on OCI uses dedicated AI clusters (GPU resources belonging exclusively to your tenancy). Cohere supports T-Few &amp; Vanilla strategies; Meta Llama supports LoRA.</p>
-    <p>³ Retired/deprecated models (Command R 16K, Command R+, Llama 3 70B, Llama 3.1 70B) are omitted from the main tables.</p>
+    <p>³ Retired models no longer listed in the current OCI pretrained-model catalog are omitted from the main tables; deprecated models still listed by OCI are shown with deprecated status.</p>
     <p>⁴ Model Import feature (GA 2025) lets you bring your own LLMs from Hugging Face or OCI Object Storage.</p>
     <p>⁶ OCI documents Grok 4 at 128K context, Grok 4.3 at 1M context, and Grok 4 Fast, Grok 4.1 Fast, Grok 4.20, and Grok 4.20 Multi-Agent at 2M context.</p>
-    <p>⁵ Data sources (OCI Official Documentation; catalog last updated 7 May 2026; OC1 commercial regions only):
+    <p>⁵ Data sources (OCI Official Documentation; catalog last updated 17 May 2026; OC1 commercial regions only):
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm" target="_blank" rel="noopener" style="color:var(--link);">Pretrained Models</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm" target="_blank" rel="noopener" style="color:var(--link);">Models by Region</a> ·
       <a href="https://docs.oracle.com/en-us/iaas/Content/generative-ai/modes.htm" target="_blank" rel="noopener" style="color:var(--link);">Inferencing Modes</a> ·
@@ -2323,14 +2323,16 @@
   var REGION_SHORT = {
     'us-ashburn-1':  'US-ASH', 'us-chicago-1':  'US-CHI', 'us-phoenix-1':  'US-PHX',
     'sa-saopaulo-1': 'SA-SAO', 'eu-frankfurt-1':'EU-FRA', 'uk-london-1':   'UK-LON',
-    'me-riyadh-1':   'ME-RUH', 'me-dubai-1':    'ME-DXB', 'ap-hyderabad-1':'AP-HYD',
+    'me-riyadh-1':   'ME-RUH', 'me-abudhabi-1': 'ME-AUH', 'me-dubai-1':    'ME-DXB',
+    'ap-hyderabad-1':'AP-HYD',
     'ap-osaka-1':    'AP-OSA'
   };
   var REGION_NAMES = {
     'us-ashburn-1':  'US East (Ashburn)',      'us-chicago-1':  'US Midwest (Chicago)',
     'us-phoenix-1':  'US West (Phoenix)',       'sa-saopaulo-1': 'Brazil East (São Paulo)',
     'eu-frankfurt-1':'Germany Central (Frankfurt)', 'uk-london-1': 'UK South (London)',
-    'me-riyadh-1':   'Saudi Arabia (Riyadh)',   'me-dubai-1':    'UAE East (Dubai)',
+    'me-riyadh-1':   'Saudi Arabia (Riyadh)',   'me-abudhabi-1': 'UAE Central (Abu Dhabi)',
+    'me-dubai-1':    'UAE East (Dubai)',
     'ap-hyderabad-1':'India South (Hyderabad)', 'ap-osaka-1':    'Japan Central (Osaka)'
   };
 
@@ -2630,7 +2632,7 @@
   var WIZARD_REGION_MAP = {
     'americas': ['us-ashburn-1', 'us-chicago-1', 'us-phoenix-1', 'sa-saopaulo-1'],
     'europe':   ['eu-frankfurt-1', 'uk-london-1'],
-    'me':       ['me-riyadh-1', 'me-dubai-1'],
+    'me':       ['me-riyadh-1', 'me-abudhabi-1', 'me-dubai-1'],
     'apac':     ['ap-hyderabad-1', 'ap-osaka-1']
   };
 
